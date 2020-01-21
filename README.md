@@ -1,0 +1,2 @@
+# sentanno
+Sentiment annotation tool
