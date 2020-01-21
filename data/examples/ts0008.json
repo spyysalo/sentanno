@@ -1,0 +1,11 @@
+{
+    "accepted": [
+        "positive"
+    ],
+    "keywords": "hyv\u00e4ksi koettu",
+    "rejected": [
+        "neutral",
+        "negative",
+        "unclear"
+    ]
+}

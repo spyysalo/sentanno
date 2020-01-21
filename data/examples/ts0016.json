@@ -1,0 +1,11 @@
+{
+    "accepted": [
+        "negative"
+    ],
+    "keywords": "nettiongelmia, ei kotimainen",
+    "rejected": [
+        "positive",
+        "neutral",
+        "unclear"
+    ]
+}

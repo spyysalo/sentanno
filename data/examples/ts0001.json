@@ -1,0 +1,11 @@
+{
+    "accepted": [
+        "positive"
+    ],
+    "keywords": "kaikki paremmin",
+    "rejected": [
+        "neutral",
+        "negative",
+        "unclear"
+    ]
+}

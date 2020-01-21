@@ -1,0 +1,11 @@
+{
+    "accepted": [
+        "negative"
+    ],
+    "keywords": "matala korko",
+    "rejected": [
+        "positive",
+        "neutral",
+        "unclear"
+    ]
+}

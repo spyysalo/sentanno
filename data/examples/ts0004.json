@@ -1,0 +1,11 @@
+{
+    "accepted": [
+        "positive"
+    ],
+    "keywords": "menettelee",
+    "rejected": [
+        "neutral",
+        "negative",
+        "unclear"
+    ]
+}

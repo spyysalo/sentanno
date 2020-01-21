@@ -1,0 +1,11 @@
+{
+    "accepted": [
+        "positive"
+    ],
+    "keywords": "kortit toimivat",
+    "rejected": [
+        "neutral",
+        "negative",
+        "unclear"
+    ]
+}

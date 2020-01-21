@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/visualization.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/'+config['FONT_FILE']) }}">
+    <style type="text/css">
+      .nav-row {
+          width: {{ config['LINE_WIDTH'] }}px;
+      }
+      .visualization {
+          width: {{ config['LINE_WIDTH'] }}px;
+      }
+{% if config['ANNOTATION_TYPE_SUBSCRIPT'] %}
+.ann::after {
+    vertical-align: sub;
+    font-size: 60%;
+    line-height: normal;
+    font-variant: small-caps; /* default is `normal` */
+}
+{# TODO generalize #}
+.ann-tChemical::after {
+    content: " Chem";
+}
+.ann-tOrganism::after {
+    content: " Org";
+}
+.ann-tGene::after {
+    content: " Gene";
+}
+.ann-tDisease::after {
+    content: " Dis";
+}
+{% endif %}
+    </style>
+{% endblock %}
+
+{% block navigation %}
+<div class="nav-row">
+  <div class="nav-left">
+    <ul class="collection-root">
+      <li><i class="far fa-folder-open"></i>
+	<a href="{{ url_for('view.show_collections') }}">[root]</a> /
+	<i class="far fa-folder-open"></i>
+	<a href="{{ url_for('view.show_collection', collection=collection) }}">{{ collection }}</a> /
+	<i class="far fa-file-alt"></i>
+	<a href="{{ url_for('view.show_annotation', collection=collection, document=document) }}">{{ document }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-controls">
+      <li class="nav-previous">
+	<span class="fa-stack">
+{% if prev_url %}<a id="nav-prev-link" href="{{ prev_url }}">{% endif %}
+	  <i class="fas fa-square fa-stack-2x"></i>
+	  <i class="fa fa-chevron-left fa-stack-1x fa-inverse"></i>
+{% if prev_url %}</a>{% endif %}
+	</span>
+      </li>
+      <li class="nav-next">
+	<span class="fa-stack">
+{% if next_url %}<a id="nav-next-link" href="{{ next_url }}">{% endif %}
+	  <i class="fas fa-square fa-stack-2x"></i>
+	  <i class="fa fa-chevron-right fa-stack-1x fa-inverse"></i>
+{% if next_url %}</a>{% endif %}
+	</span>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="visualization-wrapper">
+  <div class="visualizations">
+    {% block visualizations %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

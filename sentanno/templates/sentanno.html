@@ -1,0 +1,46 @@
+{% extends 'visbase.html' %}
+
+{% block visualizations %}
+<script>
+const PICK_ANNO_URL = "{{ url_for('view.pick_annotation', collection=collection, document=document) }}";
+
+const SAVE_KEYWORDS_URL = "{{ url_for('view.save_keywords', collection=collection, document=document) }}";
+
+const HOTKEYS = {{ config['HOTKEYS']|tojson(indent=4) }};
+
+const METADATA = {{ metadata|tojson(indent=4) }};
+</script>
+<script src="{{ url_for('static', filename='js/sentanno.js') }}"></script>
+<script>
+window.onload = load;
+</script>
+
+<hr/>
+<div id="visualization-column" class="visualization column">
+  <div class="pa-above">{{ content.above|safe }}</div>
+  <div class="pa-mid-row">
+    <div class="pa-mid-left">{{ content.left|safe }}</div>
+    <div class="pa-mid-centre">{% for k, s in content.spans.items() %}
+      <div id="span-{{ k }}">{{ s|safe }}</div>{% endfor %}
+    </div>
+    <div class="pa-mid-right">{{ content.right|safe }}</div>
+  </div>
+  <div class="pa-below">{{ content.below|safe }}</div>
+</div>
+<hr/>
+<div id="annotation-column" class="visualization column">
+  <div class="visualization row" style="align-items: center">
+{% for o, s in zip(options, status) %}
+    <span id="candidate-{{ o }}" class="pa-candidate {{ o }} {{ s }}">
+      <i class="fas fa-lg fa-{{ config['ICONS'][o] }}"></i>
+    </span>
+{% endfor %}
+    <span>Keywords:</span>
+    <input id="keyword-input" type="text" value="{{ keywords }}"/>
+  </div>
+</div>
+<div id="keywords-column" class="visualization column">
+  <div id="keywords-row" class="visualization row" style="align-items: center">
+  </div>
+</div>
+{% endblock %}

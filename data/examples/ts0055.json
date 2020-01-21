@@ -1,0 +1,10 @@
+{
+    "accepted": [
+        "unclear"
+    ],
+    "rejected": [
+        "positive",
+        "neutral",
+        "negative"
+    ]
+}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+<ul class="collection-root">
+  <li><i class="far fa-folder-open"></i>
+    <a href="{{ url_for('view.show_collections') }}">[root]</a> /
+    <i class="far fa-folder-open"></i>
+    <a href="{{ url_for('view.show_collection', collection=collection) }}">{{ collection }}</a>
+  </li>
+  <ul class="document-listing">
+{% if not names %}
+[empty]
+{% endif %}
+{% for n, s, t, a, k in zip(names, statuses, texts, accepted, keywords) %}
+    <li>{# <i class="far fa-file"></i> #}
+{% if s == config['STATUS_COMPLETE'] %}
+      <i class="fa fa-check-square"></i>
+{% elif s == config['STATUS_INCOMPLETE'] %}
+      <i class="far fa-square"></i>
+{% else %}
+      <i class="fa fa-skull"></i>
+{% endif %}
+      <a href="{{ url_for('view.show_annotation', collection=collection, document=n) }}">{{ n }}</a>
+      {{ t | truncate(40, true, '...') }}
+{% for i in a %}
+      <i class="fa fa-{{ config['ICONS'][i] }} {{ i }}"></i>
+{% endfor %}
+{% for i in k %}
+      <span class="keyword-span">{{ i }}</span>
+{% endfor %}
+    </li>
+{% endfor %}
+  </ul>
+</ul>
+{% endblock %}

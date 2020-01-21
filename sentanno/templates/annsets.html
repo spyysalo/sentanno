@@ -1,0 +1,16 @@
+{% extends 'visbase.html' %}
+
+
+{% block legend %}
+{{ legend|safe }}
+{% endblock %}
+
+
+{% block visualizations %}
+{% for k, v in content %}
+<h2>{{ k }}</h2>
+<div class="visualization">
+{{ v|safe }}
+</div>
+{% endfor %}
+{% endblock %}

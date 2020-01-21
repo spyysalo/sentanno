@@ -1,0 +1,211 @@
+/* wraps visualization(s) and legend */
+.visualization-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* align-items: center; */
+}
+
+.visualization {
+    display: block;
+}
+
+.visualization.column {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.visualization.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.visualization.row span {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.visualization.row input {
+  flex: 1;
+}
+
+.pa-mid-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.pa-mid-center {
+    display: flex;
+    flex-direction: column;
+}
+
+.pa-mid-left {
+    margin-right: 0.25em;    /* space width */
+}
+
+.pa-mid-right {
+    margin-left: 0.25em;    /* space width */
+}
+
+.pa-candidate {
+    cursor: pointer;
+}
+
+.pa-candidate.positive i { color:green; }
+.pa-candidate.negative i { color:red; }
+.pa-candidate.neutral i { color:#FFD300; }
+.pa-candidate.unclear i { color:blue; }
+
+.pa-candidate.rejected i { color: gray; }
+
+.pa-candidate.incomplete i:not(:hover) { color: gray; }
+
+.clearfix { /* from bootstrap, to avoid legend overflow */
+    *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.ann {
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+    background-color: lightgray;
+    border-radius:         3px;
+    -moz-border-radius:    3px;
+    -webkit-border-radius: 3px;
+}
+
+.ann-openright {
+    border-right: none;
+}
+
+.ann-openleft {
+    border-left: none;
+}
+
+.ann-contright {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.ann-contleft {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.ann-h0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.ann-h1 {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    line-height: 28px;
+}
+
+.ann-h2 {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    line-height: 32px;
+}
+
+.ann-h3 {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    line-height: 36px;
+}
+
+.ann-h4 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 40px;
+}
+
+.ann-h5 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 44px;
+}
+
+.ann-h6 {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: 48px;
+}
+
+.ann-h7 {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    line-height: 52px;
+}
+
+.ann-h8 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    line-height: 56px;
+}
+
+.ann-h9 {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    line-height: 60px;
+}
+
+.ann-h10 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 64px;
+}
+
+/* Preset colors. */
+.ann-tSpan {
+    background-color: #FFB300;
+    border-color: #b27d00;
+}
+
+.ann-tChemical {
+  background-color: #9fdfff;
+  border-color: #6f9cb2;
+}
+
+.ann-tDisease {
+  background-color: #ff8888;
+  border-color: #b25f5f;
+}
+
+.ann-tGene {
+  background-color: #7fa2ff;
+  border-color: #5871b2;
+}
+
+.ann-tOrganism {
+  background-color: #ffccaa;
+  border-color: #b28e76;
+}
+
+/* This is a hack to correct for hint.css making blocks too high. */
+.hint, [data-hint] { display: inline; }
+
+/* Block linking from affecting styling */
+a.ann {
+    text-decoration: none;
+    color: inherit;
+}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+<ul class="collection-root">
+  <li><i class="far fa-folder-open"></i> <a href="{{ url_for('view.show_collections') }}">[root]</a></li>
+  <ul class="collection-listing">
+{% for c in collections %}
+    <li><i class="far fa-folder"></i> <a href="{{ url_for('view.show_collection', collection=c) }}">{{ c }}</a></li>
+{% endfor %}
+  </ul>
+</ul>
+{% endblock %}
