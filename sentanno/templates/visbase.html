@@ -19,17 +19,8 @@
     font-variant: small-caps; /* default is `normal` */
 }
 {# TODO generalize #}
-.ann-tChemical::after {
-    content: " Chem";
-}
-.ann-tOrganism::after {
-    content: " Org";
-}
-.ann-tGene::after {
-    content: " Gene";
-}
-.ann-tDisease::after {
-    content: " Dis";
+.ann-tENTITY::after {
+    content: "ENTITY";
 }
 {% endif %}
     </style>
@@ -77,5 +68,8 @@
   <div class="visualizations">
     {% block visualizations %}{% endblock %}
   </div>
+</div>
+<div class="annotation-instructions">
+{% include 'instructions.html' %}
 </div>
 {% endblock %}

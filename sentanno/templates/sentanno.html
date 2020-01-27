@@ -30,12 +30,13 @@ window.onload = load;
 <hr/>
 <div id="annotation-column" class="visualization column">
   <div class="visualization row" style="align-items: center">
+    <span>Sentiment:</span>
 {% for o, s in zip(options, status) %}
     <span id="candidate-{{ o }}" class="pa-candidate {{ o }} {{ s }}">
       <i class="fas fa-lg fa-{{ config['ICONS'][o] }}"></i>
     </span>
 {% endfor %}
-    <span>Keywords:</span>
+    <span>Aspect(s):</span>
     <input id="keyword-input" type="text" value="{{ keywords }}"/>
   </div>
 </div>

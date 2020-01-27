@@ -88,7 +88,7 @@ def _add_highlight_annotations(text, annsets):
     underline = [k for k, v in FORMATTING_TYPE_TAG_MAP.items() if v == 'u'][0]
     flattened = [a for anns in annsets.values() for a in anns]
     texts = [a.text for a in flattened if a.text]
-    patterns = [ re.compile('\b'+re.escape(t)+'\b', re.I) for t in texts ]
+    patterns = [ re.compile(r'\b'+re.escape(t)+r'\b', re.I) for t in texts ]
     spans = []
     for p in patterns:
         for m in p.finditer(text):

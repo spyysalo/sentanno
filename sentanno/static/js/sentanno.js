@@ -147,17 +147,25 @@ document.addEventListener('keydown', function(event) {
 	event.preventDefault();
 	event.stopPropagation();
     }
-    else if (event.key == 'Enter') {
+    else if (event.key == 'Enter' || event.key == 'ArrowRight') {
 	// TODO make configurable
-	let nextLink = document.getElementById("nav-next-link");
-	if (nextLink) {
+	let link = document.getElementById("nav-next-link");
+	if (link) {
 	    if (allCandidatesLabeled) {
-		nextLink.click();
+		link.click();
 	    } else {
 		if (confirm("Are you sure you want to leave\nthis document without a judgment?")) {
-		    nextLink.click();
+		    link.click();
 		}
 	    }
+	}
+	event.preventDefault();
+	event.stopPropagation();
+    }
+    else if (event.key == 'ArrowLeft') {
+	let link = document.getElementById("nav-prev-link");
+	if (link) {
+	    link.click();
 	}
 	event.preventDefault();
 	event.stopPropagation();

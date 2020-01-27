@@ -176,29 +176,9 @@
 }
 
 /* Preset colors. */
-.ann-tSpan {
-    background-color: #FFB300;
-    border-color: #b27d00;
-}
-
-.ann-tChemical {
-  background-color: #9fdfff;
-  border-color: #6f9cb2;
-}
-
-.ann-tDisease {
-  background-color: #ff8888;
-  border-color: #b25f5f;
-}
-
-.ann-tGene {
-  background-color: #7fa2ff;
-  border-color: #5871b2;
-}
-
-.ann-tOrganism {
-  background-color: #ffccaa;
-  border-color: #b28e76;
+.ann-tENTITY {
+    background-color: #FFFF00;
+    border-color: #bbbb00;
 }
 
 /* This is a hack to correct for hint.css making blocks too high. */
@@ -208,4 +188,27 @@
 a.ann {
     text-decoration: none;
     color: inherit;
+}
+
+/* Single-line dt/dd from https://stackoverflow.com/a/44599527 */
+dl {
+    display: grid;
+    grid-template-columns: max-content auto;
+}
+
+dt {
+    grid-column-start: 1;
+    min-width: 8em;
+}
+
+dd {
+    grid-column-start: 2;
+}
+
+#keywords-column {
+    height: 2em;
+}
+
+div.annotation-instructions {
+    margin-top: 3em;
 }
