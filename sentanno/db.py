@@ -93,8 +93,9 @@ class DocumentData(object):
 
 
 class FilesystemData(object):
-    def __init__(self, root_dir):
+    def __init__(self, root_dir, temp_dir=None):
         self.root_dir = root_dir
+        self.temp_dir = temp_dir
 
     def get_collections(self):
         subdirs = []
@@ -211,10 +212,9 @@ class FilesystemData(object):
         data['rejected'] = rejected
         self.save_document_metadata(collection, document, data)
 
-    @staticmethod
-    def safe_write_file(fn, text):
+    def safe_write_file(self, fn, text):
         """Atomic write using os.rename()."""
-        fd, tmpfn = mkstemp()
+        fd, tmpfn = mkstemp(dir=self.temp_dir)
         with open(fd, 'wt') as f:
             f.write(text)
             # https://stackoverflow.com/a/2333979
@@ -234,7 +234,8 @@ class FilesystemData(object):
 
 def get_db():
     data_dir = conf.get_datadir()
-    return FilesystemData(data_dir)
+    temp_dir = conf.get_tempdir()
+    return FilesystemData(data_dir, temp_dir)
 
 
 def close_db(err=None):

@@ -1,7 +1,10 @@
+from os import path
 from sentanno.protocol import *
 
 
-DATADIR = 'data'
+DATADIR = path.join(path.dirname(__file__), '..', 'data')
+
+TEMPDIR = path.join(path.dirname(__file__), '..', 'temp')
 
 # Visualization configuration
 

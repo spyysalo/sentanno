@@ -3,6 +3,8 @@ from flask import current_app as app
 
 DATADIR_KEY = 'DATADIR'
 
+TEMPDIR_KEY = 'TEMPDIR'
+
 FONT_SIZE_KEY = 'FONT_SIZE'
 
 FONT_FILE_KEY = 'FONT_FILE'
@@ -19,6 +21,13 @@ def get_datadir():
         return app.config[DATADIR_KEY]
     except KeyError:
         raise ConfigError('missing {} in config'.format(DATADIR_KEY))
+
+
+def get_tempdir():
+    try:
+        return app.config[TEMPDIR_KEY]
+    except KeyError:
+        raise ConfigError('missing {} in config'.format(TEMPDIR_KEY))
 
 
 def get_font_size():
