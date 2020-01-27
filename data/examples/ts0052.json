@@ -1,11 +1,5 @@
 {
-    "accepted": [
-        "negative"
-    ],
-    "keywords": "vaihtui pankki",
-    "rejected": [
-        "positive",
-        "neutral",
-        "unclear"
-    ]
+    "accepted": [],
+    "keywords": "",
+    "rejected": []
 }
