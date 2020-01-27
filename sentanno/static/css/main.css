@@ -20,6 +20,12 @@
     font-size: 12px;
 }
 
+#alert {
+    color: white;
+    display: none;
+    font-size: 12px;
+}
+
 .page-content {
     margin: 1em;
 }

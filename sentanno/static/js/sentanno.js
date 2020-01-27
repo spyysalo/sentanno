@@ -11,6 +11,12 @@ function updateSpinner() {
     }
 }
 
+function updateAlert(message) {
+    alert = document.getElementById("alert");
+    alert.title = message;
+    alert.style.display = 'inline';
+}
+
 // https://stackoverflow.com/a/6234804
 function escapeHtml(unsafe) {
     return unsafe
@@ -95,26 +101,38 @@ function makeUrl(url, params) {
 }
 
 async function pickCandidate(pick) {
-    spinUp();
     var url = makeUrl(PICK_ANNO_URL, { "choice":  pick });
-    var response = await fetch(url);
-    var data = await response.json();
-    METADATA['accepted'] = data['accepted'];
-    METADATA['rejected'] = data['rejected'];
-    updatePicks();
+    spinUp();
+    try {
+	var response = await fetch(url);
+	var data = await response.json();
+	if (data["error"]) { throw data["message"]; }
+	METADATA['accepted'] = data['accepted'];
+	METADATA['rejected'] = data['rejected'];
+	updatePicks();
+    } catch(e) {
+	updateAlert(e);
+	console.log(e);
+    }
     spinDown();
     return data;
 }
 
 async function saveKeywords() {
-    spinUp();
     var textInput = document.getElementById("keyword-input");
     var keywords = textInput.value;
     var url = makeUrl(SAVE_KEYWORDS_URL, { "keywords":  keywords });
-    var response = await fetch(url);
-    var data = await response.json();
-    METADATA["keywords"] = data["keywords"];
-    updateKeywords();
+    spinUp();
+    try {
+	var response = await fetch(url);
+	var data = await response.json();
+	if (data["error"]) { throw data["message"]; }
+	METADATA["keywords"] = data["keywords"];
+	updateKeywords();
+    } catch(e) {
+	updateAlert(e);
+	console.log(e);
+    }
     spinDown();
 }
 

@@ -1,5 +1,5 @@
 from flask import Blueprint
-from flask import request, url_for, render_template, jsonify
+from flask import request, url_for, render_template, jsonify, abort
 from flask import current_app as app
 
 from .db import get_db
@@ -26,14 +26,22 @@ def root():
 @bp.route('/')
 def show_collections():
     db = get_db()
-    collections = db.get_collections()
+    try:
+        collections = db.get_collections()
+    except:
+        app.logger.error('Failed to get collections')
+        abort(500)
     return render_template('collections.html', collections=collections)
 
 
 @bp.route('/<collection>/')
 def show_collection(collection):
     db = get_db()
-    docdata = db.get_documents(collection, include_data=True)
+    try:
+        docdata = db.get_documents(collection, include_data=True)
+    except:
+        app.logger.error('Failed to get document data')
+        abort(500)
     names, statuses, texts, accepted, keywords = docdata
     return render_template('documents.html', **locals())
 
@@ -101,10 +109,17 @@ def save_keywords(collection, document):
     keywords = request.args.get('keywords')
     app.logger.info('{}/{}: keywords "{}"'.format(
         collection, document, keywords))
-    db.set_document_keywords(collection, document, keywords)
-    return jsonify({
-        'keywords': keywords
-    })
+    try:
+        db.set_document_keywords(collection, document, keywords)
+    except:
+        return jsonify({
+            'error': True,
+            'message': 'Server error writing DB'
+        })
+    else:
+        return jsonify({
+            'keywords': keywords
+        })
 
 
 @bp.route('/<collection>/<document>/pick')
@@ -126,12 +141,18 @@ def pick_annotation(collection, document):
 
     app.logger.info('{}/{}: accepted {}, rejected {}'.format(
         collection, document, accepted, rejected))
-    db.set_document_picks(collection, document, accepted, rejected)
 
-    # Make sure the DB agrees
-    data = db.get_document_metadata(collection, document)
-
-    return jsonify({
-        'accepted': data['accepted'],
-        'rejected': data['rejected'],
-    })
+    try:
+        db.set_document_picks(collection, document, accepted, rejected)
+    except:
+        return jsonify({
+            'error': True,
+            'message': 'Server error writing DB'
+        })
+    else:
+        # Read back to confirm the DB agrees
+        data = db.get_document_metadata(collection, document)
+        return jsonify({
+            'accepted': data['accepted'],
+            'rejected': data['rejected'],
+        })
