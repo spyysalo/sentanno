@@ -1,11 +1,5 @@
 {
-    "accepted": [
-        "positive"
-    ],
-    "keywords": "t\u00e4ysverinen",
-    "rejected": [
-        "neutral",
-        "negative",
-        "unclear"
-    ]
+    "accepted": [],
+    "keywords": "",
+    "rejected": []
 }

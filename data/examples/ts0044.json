@@ -1,11 +1,5 @@
 {
-    "accepted": [
-        "positive"
-    ],
-    "keywords": "visa electron toiminut",
-    "rejected": [
-        "neutral",
-        "negative",
-        "unclear"
-    ]
+    "accepted": [],
+    "keywords": "",
+    "rejected": []
 }

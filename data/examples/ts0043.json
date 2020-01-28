@@ -1,11 +1,5 @@
 {
-    "accepted": [
-        "negative"
-    ],
-    "keywords": "s\u00f6ssimiset",
-    "rejected": [
-        "positive",
-        "neutral",
-        "unclear"
-    ]
+    "accepted": [],
+    "keywords": "",
+    "rejected": []
 }

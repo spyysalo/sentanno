@@ -1,11 +1,5 @@
 {
-    "accepted": [
-        "positive"
-    ],
-    "keywords": "sujuvasti palveleva, hyvin palveleva, ei rahasta",
-    "rejected": [
-        "neutral",
-        "negative",
-        "unclear"
-    ]
+    "accepted": [],
+    "keywords": "",
+    "rejected": []
 }

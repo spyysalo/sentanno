@@ -1,11 +1,5 @@
 {
-    "accepted": [
-        "positive"
-    ],
-    "keywords": "ei voi moittia palvelua",
-    "rejected": [
-        "neutral",
-        "negative",
-        "unclear"
-    ]
+    "accepted": [],
+    "keywords": "",
+    "rejected": []
 }

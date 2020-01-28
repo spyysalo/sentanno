@@ -1,11 +1,5 @@
 {
-    "accepted": [
-        "positive"
-    ],
-    "keywords": "hyv\u00e4 vaihtoehto",
-    "rejected": [
-        "neutral",
-        "negative",
-        "unclear"
-    ]
+    "accepted": [],
+    "keywords": "",
+    "rejected": []
 }
