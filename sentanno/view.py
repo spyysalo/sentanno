@@ -25,22 +25,22 @@ def root():
 
 @bp.route('/')
 def show_collections():
-    db = get_db()
     try:
+        db = get_db()
         collections = db.get_collections()
-    except:
-        app.logger.error('Failed to get collections')
+    except Exception as e:
+        app.logger.error('Failed to get collections: {}'.format(e))
         abort(500)
     return render_template('collections.html', collections=collections)
 
 
 @bp.route('/<collection>/')
 def show_collection(collection):
-    db = get_db()
     try:
+        db = get_db()
         docdata = db.get_documents(collection, include_data=True)
-    except:
-        app.logger.error('Failed to get document data')
+    except Exception as e:
+        app.logger.error('Failed to get document data: {}'.format(e))
         abort(500)
     names, statuses, texts, accepted, keywords = docdata
     return render_template('documents.html', **locals())

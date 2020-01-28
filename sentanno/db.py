@@ -133,7 +133,12 @@ class FilesystemData(object):
                         status = app.config['STATUS_COMPLETE']
                     else:
                         status = app.config['STATUS_INCOMPLETE']
-                except:
+                except Exception as e:
+                    app.logger.warning('DB error reading {}/{}: {}'.format(
+                        collection, root, e))
+                    texts.append('')
+                    accepted.append([])
+                    keywords.append([])
                     status = app.config['STATUS_ERROR']
                 statuses.append(status)
             return names, statuses, texts, accepted, keywords
