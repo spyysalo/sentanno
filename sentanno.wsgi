@@ -3,8 +3,10 @@
 import logging
 import sys
 
+from os import path
+
 logging.basicConfig(stream=sys.stderr)
-sys.path.insert(0, '/var/www/flask/sentanno/')
+sys.path.insert(0, path.dirname(__file__))
 
 from sentanno import create_app
 
