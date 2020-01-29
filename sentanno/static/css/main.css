@@ -90,9 +90,3 @@ ul.document-listing {
     /* -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
     line-height: normal;    
 }
-
-/* TODO: avoid redundant definitions in visualization.css */
-i.positive { color:green; }
-i.negative { color:red; }
-i.neutral { color:#FFD300; }
-i.unclear { color:blue; }

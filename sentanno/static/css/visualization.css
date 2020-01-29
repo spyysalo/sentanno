@@ -56,11 +56,6 @@
     cursor: pointer;
 }
 
-.pa-candidate.positive i { color:green; }
-.pa-candidate.negative i { color:red; }
-.pa-candidate.neutral i { color:#FFD300; }
-.pa-candidate.unclear i { color:blue; }
-
 .pa-candidate.rejected i { color: gray; }
 
 .pa-candidate.incomplete i:not(:hover) { color: gray; }

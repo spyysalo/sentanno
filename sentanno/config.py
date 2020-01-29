@@ -21,16 +21,34 @@ ANNOTATION_TYPE_SUBSCRIPT = False # True
 
 HIGHLIGHT_CONTEXT_MENTIONS = True
 
+# Annotation option
+ANNOTATION_OPTIONS = [
+    SELECT_POSITIVE,
+    SELECT_NEUTRAL,
+    SELECT_NEGATIVE,
+    SELECT_MIXED,
+    SELECT_UNCLEAR
+]
+
 # Fontawesome icons
 ICONS = {
     SELECT_POSITIVE: 'smile',
-    SELECT_NEUTRAL: 'meh',
+    SELECT_NEUTRAL: 'meh-blank',
     SELECT_NEGATIVE: 'frown',
+    SELECT_MIXED: 'meh',
     SELECT_UNCLEAR: 'question-circle',
 }
 
-# Key binding configuration
+# Icon colors
+ICON_COLORS = {
+    SELECT_POSITIVE: 'green',
+    SELECT_NEUTRAL: 'black',
+    SELECT_NEGATIVE: 'red',
+    SELECT_MIXED: 'purple',
+    SELECT_UNCLEAR: 'blue',
+}
 
+# Key binding configuration
 HOTKEYS = {
     '1': SELECT_POSITIVE,    # select positive sentiment
     '2': SELECT_NEUTRAL,  # select neutral sentiment

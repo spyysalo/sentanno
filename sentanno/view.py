@@ -4,18 +4,10 @@ from flask import current_app as app
 
 from .db import get_db
 from .visualize import visualize_candidates, visualize_annotation_sets
-from .protocol import SELECT_POSITIVE, SELECT_NEGATIVE, SELECT_NEUTRAL
-from .protocol import SELECT_UNCLEAR, CLEAR_SELECTION
+from .config import SELECT_POSITIVE, SELECT_NEGATIVE, SELECT_NEUTRAL
+from .config import SELECT_UNCLEAR, CLEAR_SELECTION, ANNOTATION_OPTIONS
 
 bp = Blueprint('view', __name__, static_folder='static', url_prefix='/sentanno')
-
-
-ANNOTATION_OPTIONS = [
-    SELECT_POSITIVE,
-    SELECT_NEUTRAL,
-    SELECT_NEGATIVE,
-    SELECT_UNCLEAR
-]
 
 
 @bp.route('/')
@@ -111,7 +103,8 @@ def save_keywords(collection, document):
         collection, document, keywords))
     try:
         db.set_document_keywords(collection, document, keywords)
-    except:
+    except Exception as e:
+        app.logger.error('Failed to save keywords: {}'.format(e))
         return jsonify({
             'error': True,
             'message': 'Server error writing DB'
@@ -144,7 +137,8 @@ def pick_annotation(collection, document):
 
     try:
         db.set_document_picks(collection, document, accepted, rejected)
-    except:
+    except Exception as e:
+        app.logger.error('Failed to set picks: {}'.format(e))
         return jsonify({
             'error': True,
             'message': 'Server error writing DB'

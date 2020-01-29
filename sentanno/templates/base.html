@@ -11,6 +11,10 @@
           font-family: 'Open Sans', sans-serif;
           font-size: {{ config['FONT_SIZE'] }}px;
       }
+{% for i in config['ANNOTATION_OPTIONS'] %}
+      i.{{ i }} { color:{{ config['ICON_COLORS'][i] }} }
+      .pa-candidate.{{ i }} i { color:{{ config['ICON_COLORS'][i] }} }
+{% endfor %}
     </style>
 {% block head %}{% endblock %}
   </head>
